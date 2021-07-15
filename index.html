@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Update CSS Variables with <span class="js">JS </span></h1>
+    <div class="inputs">
+        <label for="padding">Spacing：</label>
+        <input type="range" id="padding" name="padding" min="0" max="100" value="20" data-sizing="px">
+
+        <label for="blur">Blur： </label>
+        <input type="range" id="blur" min="0" max="10" value="3" name="blur" data-sizing="px">
+
+        <label for="color">Color： </label>
+        <input type="color" name="color" value="#FFFFFF" class="color">
+
+
+    </div>
+    <img src="wqf.jpg" alt="">
+</body>
+<script>
+    const inputs = document.querySelectorAll('input')
+    console.log(inputs);
+
+    function handlerUpdate() {
+        console.log(this.value);
+        console.log();
+        // console.log(e);
+        const tex = this.dataset.sizing || '';
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + tex)
+    }
+    inputs.forEach(input => input.addEventListener('change', handlerUpdate))
+    inputs.forEach(input => input.addEventListener('mousemove', handlerUpdate))
+</script>
+
+</html>
